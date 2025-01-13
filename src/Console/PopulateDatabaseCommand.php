@@ -33,7 +33,9 @@ class PopulateDatabaseCommand extends Command
         $faker = Factory::create();
         $output->writeln('Populate database...');
 
-        /** @var \Illuminate\Database\Capsule\Manager $db */
+        /**
+ * @var \Illuminate\Database\Capsule\Manager $db 
+*/
         $db = $this->app->getContainer()->get('db');
 
         $db->getConnection()->statement("SET FOREIGN_KEY_CHECKS=0");
@@ -47,8 +49,10 @@ class PopulateDatabaseCommand extends Command
             $phoneNumber = addslashes($faker->phoneNumber());
             $companyEmail = addslashes($faker->companyEmail);
             $url = addslashes($faker->url);
-            $db->getConnection()->statement("INSERT INTO `companies` VALUES 
-            ($i, '$company', '$phoneNumber', '$companyEmail', '$url', 'https://picsum.photos/800/400' , now(), now(), null)");
+            $db->getConnection()->statement(
+                "INSERT INTO `companies` VALUES 
+            ($i, '$company', '$phoneNumber', '$companyEmail', '$url', 'https://picsum.photos/800/400' , now(), now(), null)"
+            );
 
             for ($i = 1; $i < 4; $i++) {
                 $city = addslashes($faker->city);
@@ -57,17 +61,21 @@ class PopulateDatabaseCommand extends Command
                 $country = addslashes($faker->country);
                 $email = addslashes($faker->email);
                 $number = $faker->numberBetween(1, 2);
-                $db->getConnection()->statement("INSERT INTO `offices` VALUES 
-                ($i, 'bureau de $city', '$address', '$city', '$postcode', '$country', '$email', NULL, $number , now(), now())");
+                $db->getConnection()->statement(
+                    "INSERT INTO `offices` VALUES 
+                ($i, 'bureau de $city', '$address', '$city', '$postcode', '$country', '$email', NULL, $number , now(), now())"
+                );
 
                 for ($i = 1; $i < 11; $i++) {
                     $firstName = addslashes($faker->firstName);
                     $lastName = addslashes($faker->lastName);
                     $email = addslashes($faker->email);
                     $jobTitle = addslashes($faker->jobTitle);
-                    $number = $faker->numberBetween(1,4) ;
-                    $db->getConnection()->statement("INSERT INTO `employees` VALUES 
-                    ($i, '$firstName', '$lastName', $number , '$email', NULL, '$jobTitle', now(), now())");
+                    $number = $faker->numberBetween(1, 4);
+                    $db->getConnection()->statement(
+                        "INSERT INTO `employees` VALUES 
+                    ($i, '$firstName', '$lastName', $number , '$email', NULL, '$jobTitle', now(), now())"
+                    );
                 }
             }
         }
