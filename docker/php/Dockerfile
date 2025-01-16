@@ -14,3 +14,5 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN apt install -y nodejs npm
 
 RUN npm install -g eslint
+
+RUN npm install -g vite

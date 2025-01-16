@@ -3,13 +3,18 @@
     "version": "1.0.0",
     "description": "ajout de eslint",
     "scripts": {
-      "lint": "eslint . --ext .js --ignore-path .gitignore ",
-      "fix": "eslint . --ext .js --ignore-path .gitignore --fix"
+      "lint": "eslint . --ext .js --ignore-path .gitignore",
+      "fix": "eslint . --ext .js --ignore-path .gitignore --fix",
+      "dev": "vite --host",
+      "build": "vite build --emptyOutDir"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
       "eslint": "^8.0.0",
-      "eslint-config-airbnb-base": "^15.0.0"
-    }
+      "eslint-config-airbnb-base": "^15.0.0",
+      "sass": "^1.*",
+      "vite": "^5.*"
+    },
+    "type": "module"
   }
